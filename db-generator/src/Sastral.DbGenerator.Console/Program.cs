@@ -24,9 +24,6 @@ class Program
 
             var context = services.GetRequiredService<SastralDbContext>();
             
-            logger.LogInformation("Ensuring database is created...");
-            await context.Database.EnsureCreatedAsync();
-            
             logger.LogInformation("Running pending migrations...");
             await context.Database.MigrateAsync();
             

@@ -1,4 +1,6 @@
 using Sastral.DbGenerator.Domain.Common;
+using Sastral.DbGenerator.Domain.Entities.Payments;
+using Sastral.DbGenerator.Domain.Entities.Shipments;
 using Sastral.DbGenerator.Domain.Entities.Users;
 
 namespace Sastral.DbGenerator.Domain.Entities.Orders;

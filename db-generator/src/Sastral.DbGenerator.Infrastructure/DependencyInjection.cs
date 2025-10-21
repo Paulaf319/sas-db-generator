@@ -12,7 +12,7 @@ public static class DependencyInjection
     {
         // Add DbContext
         services.AddDbContext<SastralDbContext>(options =>
-            options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
+            options.UseSqlServer(configuration.GetConnectionString("Dev-Pau")));
 
         // Register UnitOfWork
         services.AddScoped<IUnitOfWork>(provider => provider.GetRequiredService<SastralDbContext>());
