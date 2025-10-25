@@ -24,9 +24,11 @@ namespace Sastral.DbGenerator.Infrastructure.Migrations
 
             modelBuilder.Entity("Sastral.DbGenerator.Domain.Entities.Audits.AuditLog", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Action")
                         .IsRequired()
@@ -47,15 +49,15 @@ namespace Sastral.DbGenerator.Infrastructure.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
-                    b.Property<Guid>("EntityId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<int>("EntityId")
+                        .HasColumnType("int");
 
                     b.Property<string>("IpAddress")
                         .HasMaxLength(45)
                         .HasColumnType("nvarchar(45)");
 
-                    b.Property<Guid>("UserId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -70,9 +72,11 @@ namespace Sastral.DbGenerator.Infrastructure.Migrations
 
             modelBuilder.Entity("Sastral.DbGenerator.Domain.Entities.Carts.Cart", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
@@ -92,8 +96,8 @@ namespace Sastral.DbGenerator.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid?>("UserId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<int?>("UserId")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -104,12 +108,14 @@ namespace Sastral.DbGenerator.Infrastructure.Migrations
 
             modelBuilder.Entity("Sastral.DbGenerator.Domain.Entities.Carts.CartItem", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("int");
 
-                    b.Property<Guid>("CartId")
-                        .HasColumnType("uniqueidentifier");
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("CartId")
+                        .HasColumnType("int");
 
                     b.Property<int>("Quantity")
                         .HasColumnType("int");
@@ -117,8 +123,8 @@ namespace Sastral.DbGenerator.Infrastructure.Migrations
                     b.Property<decimal>("UnitPrice")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<Guid>("VariantId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<int>("VariantId")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -131,9 +137,11 @@ namespace Sastral.DbGenerator.Infrastructure.Migrations
 
             modelBuilder.Entity("Sastral.DbGenerator.Domain.Entities.Inventory.InventoryMovement", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
@@ -153,8 +161,8 @@ namespace Sastral.DbGenerator.Infrastructure.Migrations
                         .HasMaxLength(500)
                         .HasColumnType("nvarchar(500)");
 
-                    b.Property<Guid>("PerformedBy")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<int>("PerformedBy")
+                        .HasColumnType("int");
 
                     b.Property<int>("Quantity")
                         .HasColumnType("int");
@@ -163,8 +171,8 @@ namespace Sastral.DbGenerator.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid>("VariantId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<int>("VariantId")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -177,9 +185,11 @@ namespace Sastral.DbGenerator.Infrastructure.Migrations
 
             modelBuilder.Entity("Sastral.DbGenerator.Domain.Entities.Orders.Order", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
@@ -215,8 +225,8 @@ namespace Sastral.DbGenerator.Infrastructure.Migrations
                     b.Property<decimal>("Total")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<Guid?>("UserId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<int?>("UserId")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -230,12 +240,14 @@ namespace Sastral.DbGenerator.Infrastructure.Migrations
 
             modelBuilder.Entity("Sastral.DbGenerator.Domain.Entities.Orders.OrderItem", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("int");
 
-                    b.Property<Guid>("OrderId")
-                        .HasColumnType("uniqueidentifier");
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("OrderId")
+                        .HasColumnType("int");
 
                     b.Property<int>("Quantity")
                         .HasColumnType("int");
@@ -243,8 +255,8 @@ namespace Sastral.DbGenerator.Infrastructure.Migrations
                     b.Property<decimal>("UnitPrice")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<Guid>("VariantId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<int>("VariantId")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -257,9 +269,11 @@ namespace Sastral.DbGenerator.Infrastructure.Migrations
 
             modelBuilder.Entity("Sastral.DbGenerator.Domain.Entities.Payments.Payment", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<decimal>("Amount")
                         .HasColumnType("decimal(18,2)");
@@ -282,8 +296,8 @@ namespace Sastral.DbGenerator.Infrastructure.Migrations
                         .HasMaxLength(255)
                         .HasColumnType("nvarchar(255)");
 
-                    b.Property<Guid>("OrderId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<int>("OrderId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Provider")
                         .IsRequired()
@@ -306,17 +320,19 @@ namespace Sastral.DbGenerator.Infrastructure.Migrations
 
             modelBuilder.Entity("Sastral.DbGenerator.Domain.Entities.Products.Category", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
-                    b.Property<Guid?>("ParentId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<int?>("ParentId")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -327,15 +343,17 @@ namespace Sastral.DbGenerator.Infrastructure.Migrations
 
             modelBuilder.Entity("Sastral.DbGenerator.Domain.Entities.Products.Product", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("int");
 
-                    b.Property<Guid?>("BrandId")
-                        .HasColumnType("uniqueidentifier");
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<Guid>("CategoryId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<int?>("BrandId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("CategoryId")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
@@ -383,9 +401,11 @@ namespace Sastral.DbGenerator.Infrastructure.Migrations
 
             modelBuilder.Entity("Sastral.DbGenerator.Domain.Entities.Products.ProductVariant", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Barcode")
                         .IsRequired()
@@ -410,8 +430,8 @@ namespace Sastral.DbGenerator.Infrastructure.Migrations
                         .HasMaxLength(255)
                         .HasColumnType("nvarchar(255)");
 
-                    b.Property<Guid>("ProductId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Size")
                         .HasMaxLength(20)
@@ -432,9 +452,11 @@ namespace Sastral.DbGenerator.Infrastructure.Migrations
 
             modelBuilder.Entity("Sastral.DbGenerator.Domain.Entities.Shipments.Shipment", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<DateTime?>("ActualDeliveryDate")
                         .HasColumnType("datetime2");
@@ -472,8 +494,8 @@ namespace Sastral.DbGenerator.Infrastructure.Migrations
                         .HasMaxLength(255)
                         .HasColumnType("nvarchar(255)");
 
-                    b.Property<Guid>("OrderId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<int>("OrderId")
+                        .HasColumnType("int");
 
                     b.Property<string>("PostalCode")
                         .HasMaxLength(20)
@@ -504,9 +526,11 @@ namespace Sastral.DbGenerator.Infrastructure.Migrations
 
             modelBuilder.Entity("Sastral.DbGenerator.Domain.Entities.Users.Role", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -523,21 +547,23 @@ namespace Sastral.DbGenerator.Infrastructure.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("11111111-1111-1111-1111-111111111111"),
+                            Id = 1,
                             Name = "Admin"
                         },
                         new
                         {
-                            Id = new Guid("22222222-2222-2222-2222-222222222222"),
+                            Id = 2,
                             Name = "Operador"
                         });
                 });
 
             modelBuilder.Entity("Sastral.DbGenerator.Domain.Entities.Users.User", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
@@ -566,8 +592,8 @@ namespace Sastral.DbGenerator.Infrastructure.Migrations
                         .HasMaxLength(255)
                         .HasColumnType("nvarchar(255)");
 
-                    b.Property<Guid>("RoleId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<int>("RoleId")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 

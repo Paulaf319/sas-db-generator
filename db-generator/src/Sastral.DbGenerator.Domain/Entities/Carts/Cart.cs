@@ -16,7 +16,7 @@ public class Cart : BaseAuditableEntity
     public CartStatus Status { get; private set; }
 
     // Navigation properties
-    public int? User { get; private set; }
+    public User? User { get; private set; }
     public ICollection<CartItem> Items { get; private set; } = new List<CartItem>();
 
     private Cart() { } // For EF Core

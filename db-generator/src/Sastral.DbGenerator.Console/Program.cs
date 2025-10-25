@@ -58,29 +58,29 @@ class Program
     {
         logger.LogInformation("Checking if initial data seeding is needed...");
 
-        // Check if roles already exist (they should be seeded via configuration)
-        var rolesCount = await context.Roles.CountAsync();
-        if (rolesCount < 1)
+        // Check if users already exist
+        var usersCount = await context.Users.CountAsync();
+        if (usersCount < 1)
         {
-            List<Role> roles = new List<Role>{ 
-                new Role("ADMINISTRATOR"),
-                new Role("OPERATOR")};
-
-            await context.SaveChangesAsync();
+            logger.LogInformation("Seeding initial users...");
+            
             var passwordHasher = new PasswordHasher<User>();
 
             List<User> users = new List<User>{
                 new User("pfreytes@yahoo.com", passwordHasher.HashPassword(null!, "admin123"), 1),
-                new User("ramoncito@yahoo.com", passwordHasher.HashPassword(null !, "12345"), 2),
-                new User("robertito@yahoo.com", passwordHasher.HashPassword(null !, "12345"), 2)};
+                new User("ramoncito@yahoo.com", passwordHasher.HashPassword(null!, "12345"), 2),
+                new User("robertito@yahoo.com", passwordHasher.HashPassword(null!, "12345"), 2)};
+
+            context.Users.AddRange(users);
+            await context.SaveChangesAsync();
+            
+            logger.LogInformation("Initial users seeded successfully.");
+        }
+        else
+        {
+            logger.LogInformation("Users already exist, skipping user seeding.");
         }
         
-        logger.LogInformation("Seeding initial data...");
-
-        // The roles are seeded via EF configuration, but we can add a default admin user here if needed
-        // This would typically be done in a separate seeding process in a real application
-
-        await context.SaveChangesAsync();
         logger.LogInformation("Initial data seeding completed.");
     }
 }
