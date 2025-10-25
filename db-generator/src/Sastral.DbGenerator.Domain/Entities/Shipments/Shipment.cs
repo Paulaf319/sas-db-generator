@@ -23,7 +23,7 @@ public enum ShipmentMethodStatus
 
 public class Shipment : BaseAuditableEntity
 {
-    public Guid OrderId { get; private set; }
+    public int OrderId { get; private set; }
     public ShipmentProvider Provider { get; private set; }
     public string? TrackingCode { get; private set; }
     public string Address { get; private set; } = string.Empty;
@@ -41,7 +41,7 @@ public class Shipment : BaseAuditableEntity
 
     private Shipment() { } // For EF Core
 
-    public Shipment(Guid orderId, ShipmentProvider provider, string address, decimal cost)
+    public Shipment(int orderId, ShipmentProvider provider, string address, decimal cost)
     {
         OrderId = orderId;
         Provider = provider;

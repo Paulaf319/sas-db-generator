@@ -12,22 +12,22 @@ public enum CartStatus
 
 public class Cart : BaseAuditableEntity
 {
-    public Guid? UserId { get; private set; }
+    public int? UserId { get; private set; }
     public CartStatus Status { get; private set; }
 
     // Navigation properties
-    public User? User { get; private set; }
+    public int? User { get; private set; }
     public ICollection<CartItem> Items { get; private set; } = new List<CartItem>();
 
     private Cart() { } // For EF Core
 
-    public Cart(Guid? userId = null)
+    public Cart(int? userId = null)
     {
         UserId = userId;
         Status = CartStatus.Active;
     }
 
-    public void AddItem(Guid variantId, int quantity, decimal unitPrice)
+    public void AddItem(int variantId, int quantity, decimal unitPrice)
     {
         var existingItem = Items.FirstOrDefault(i => i.VariantId == variantId);
         if (existingItem != null)
@@ -42,7 +42,7 @@ public class Cart : BaseAuditableEntity
         ModifiedAt = DateTime.UtcNow;
     }
 
-    public void RemoveItem(Guid variantId)
+    public void RemoveItem(int variantId)
     {
         var item = Items.FirstOrDefault(i => i.VariantId == variantId);
         if (item != null)
@@ -52,7 +52,7 @@ public class Cart : BaseAuditableEntity
         }
     }
 
-    public void UpdateItemQuantity(Guid variantId, int quantity)
+    public void UpdateItemQuantity(int variantId, int quantity)
     {
         var item = Items.FirstOrDefault(i => i.VariantId == variantId);
         if (item != null)

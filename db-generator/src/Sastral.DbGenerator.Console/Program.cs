@@ -5,6 +5,8 @@ using Microsoft.Extensions.Logging;
 using Sastral.DbGenerator.Infrastructure;
 using Sastral.DbGenerator.Infrastructure.Persistence.Contexts;
 using Microsoft.EntityFrameworkCore;
+using Sastral.DbGenerator.Domain.Entities.Users;
+using Microsoft.AspNetCore.Identity;
 
 namespace Sastral.DbGenerator.Console;
 
@@ -58,12 +60,21 @@ class Program
 
         // Check if roles already exist (they should be seeded via configuration)
         var rolesCount = await context.Roles.CountAsync();
-        if (rolesCount > 0)
+        if (rolesCount < 1)
         {
-            logger.LogInformation("Roles already exist. Skipping initial data seeding.");
-            return;
-        }
+            List<Role> roles = new List<Role>{ 
+                new Role("ADMINISTRATOR"),
+                new Role("OPERATOR")};
 
+            await context.SaveChangesAsync();
+            var passwordHasher = new PasswordHasher<User>();
+
+            List<User> users = new List<User>{
+                new User("pfreytes@yahoo.com", passwordHasher.HashPassword(null!, "admin123"), 1),
+                new User("ramoncito@yahoo.com", passwordHasher.HashPassword(null !, "12345"), 2),
+                new User("robertito@yahoo.com", passwordHasher.HashPassword(null !, "12345"), 2)};
+        }
+        
         logger.LogInformation("Seeding initial data...");
 
         // The roles are seeded via EF configuration, but we can add a default admin user here if needed

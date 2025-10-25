@@ -17,10 +17,10 @@ public enum MovementReason
 
 public class InventoryMovement : BaseAuditableEntity
 {
-    public Guid VariantId { get; private set; }
+    public int VariantId { get; private set; }
     public int Quantity { get; private set; }
     public MovementReason Reason { get; private set; }
-    public Guid PerformedBy { get; private set; }
+    public int PerformedBy { get; private set; }
     public string? Notes { get; private set; }
 
     // Navigation properties
@@ -29,7 +29,7 @@ public class InventoryMovement : BaseAuditableEntity
 
     private InventoryMovement() { } // For EF Core
 
-    public InventoryMovement(Guid variantId, int quantity, MovementReason reason, Guid performedBy, string? notes = null)
+    public InventoryMovement(int variantId, int quantity, MovementReason reason, int performedBy, string? notes = null)
     {
         VariantId = variantId;
         Quantity = quantity;

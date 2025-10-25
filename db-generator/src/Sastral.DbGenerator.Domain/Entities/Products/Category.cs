@@ -5,7 +5,7 @@ namespace Sastral.DbGenerator.Domain.Entities.Products;
 public class Category : BaseEntity
 {
     public string Name { get; private set; } = string.Empty;
-    public Guid? ParentId { get; private set; }
+    public int? ParentId { get; private set; }
 
     // Navigation properties
     public Category? Parent { get; private set; }
@@ -14,7 +14,7 @@ public class Category : BaseEntity
 
     private Category() { } // For EF Core
 
-    public Category(string name, Guid? parentId = null)
+    public Category(string name, int? parentId = null)
     {
         Name = name;
         ParentId = parentId;
@@ -25,7 +25,7 @@ public class Category : BaseEntity
         Name = name;
     }
 
-    public void UpdateParent(Guid? parentId)
+    public void UpdateParent(int? parentId)
     {
         ParentId = parentId;
     }

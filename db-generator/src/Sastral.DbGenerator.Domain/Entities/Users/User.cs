@@ -9,7 +9,7 @@ public class User : BaseAuditableEntity
 {
     public string Email { get; private set; } = string.Empty;
     public string PasswordHash { get; private set; } = string.Empty;
-    public Guid RoleId { get; private set; }
+    public int RoleId { get; private set; }
     public bool IsActive { get; private set; } = true;
 
     // Navigation properties
@@ -20,7 +20,7 @@ public class User : BaseAuditableEntity
 
     private User() { } // For EF Core
 
-    public User(string email, string passwordHash, Guid roleId)
+    public User(string email, string passwordHash, int roleId)
     {
         Email = email;
         PasswordHash = passwordHash;

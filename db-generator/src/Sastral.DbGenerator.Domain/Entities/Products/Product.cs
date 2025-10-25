@@ -7,8 +7,8 @@ public class Product : BaseAuditableEntity
     public string Sku { get; private set; } = string.Empty;
     public string Name { get; private set; } = string.Empty;
     public string? Description { get; private set; }
-    public Guid? BrandId { get; private set; }
-    public Guid CategoryId { get; private set; }
+    public int? BrandId { get; private set; }
+    public int CategoryId { get; private set; }
     public decimal Price { get; private set; }
     public bool IsActive { get; private set; } = true;
 
@@ -18,7 +18,7 @@ public class Product : BaseAuditableEntity
 
     private Product() { } // For EF Core
 
-    public Product(string sku, string name, string? description, Guid categoryId, decimal price, Guid? brandId = null)
+    public Product(string sku, string name, string? description, int categoryId, decimal price, int? brandId = null)
     {
         Sku = sku;
         Name = name;

@@ -5,8 +5,8 @@ namespace Sastral.DbGenerator.Domain.Entities.Orders;
 
 public class OrderItem : BaseEntity
 {
-    public Guid OrderId { get; private set; }
-    public Guid VariantId { get; private set; }
+    public int OrderId { get; private set; }
+    public int VariantId { get; private set; }
     public int Quantity { get; private set; }
     public decimal UnitPrice { get; private set; }
 
@@ -16,7 +16,7 @@ public class OrderItem : BaseEntity
 
     private OrderItem() { } // For EF Core
 
-    public OrderItem(Guid orderId, Guid variantId, int quantity, decimal unitPrice)
+    public OrderItem(int orderId, int variantId, int quantity, decimal unitPrice)
     {
         OrderId = orderId;
         VariantId = variantId;

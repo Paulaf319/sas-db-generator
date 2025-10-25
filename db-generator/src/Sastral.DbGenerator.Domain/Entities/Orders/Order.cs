@@ -36,7 +36,7 @@ public enum ShippingStatus
 public class Order : BaseAuditableEntity
 {
     public string Number { get; private set; } = string.Empty;
-    public Guid? UserId { get; private set; }
+    public int? UserId { get; private set; }
     public decimal Total { get; private set; }
     public OrderStatus Status { get; private set; }
     public PaymentStatus PaymentStatus { get; private set; }
@@ -50,7 +50,7 @@ public class Order : BaseAuditableEntity
 
     private Order() { } // For EF Core
 
-    public Order(string number, Guid? userId = null)
+    public Order(string number, int? userId = null)
     {
         Number = number;
         UserId = userId;
@@ -60,7 +60,7 @@ public class Order : BaseAuditableEntity
         Total = 0;
     }
 
-    public void AddItem(Guid variantId, int quantity, decimal unitPrice)
+    public void AddItem(int variantId, int quantity, decimal unitPrice)
     {
         var existingItem = Items.FirstOrDefault(i => i.VariantId == variantId);
         if (existingItem != null)
@@ -75,7 +75,7 @@ public class Order : BaseAuditableEntity
         RecalculateTotal();
     }
 
-    public void RemoveItem(Guid variantId)
+    public void RemoveItem(int variantId)
     {
         var item = Items.FirstOrDefault(i => i.VariantId == variantId);
         if (item != null)

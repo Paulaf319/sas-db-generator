@@ -5,8 +5,8 @@ namespace Sastral.DbGenerator.Domain.Entities.Carts;
 
 public class CartItem : BaseEntity
 {
-    public Guid CartId { get; private set; }
-    public Guid VariantId { get; private set; }
+    public int CartId { get; private set; }
+    public int VariantId { get; private set; }
     public int Quantity { get; private set; }
     public decimal UnitPrice { get; private set; }
 
@@ -16,7 +16,7 @@ public class CartItem : BaseEntity
 
     private CartItem() { } // For EF Core
 
-    public CartItem(Guid cartId, Guid variantId, int quantity, decimal unitPrice)
+    public CartItem(int cartId, int variantId, int quantity, decimal unitPrice)
     {
         CartId = cartId;
         VariantId = variantId;

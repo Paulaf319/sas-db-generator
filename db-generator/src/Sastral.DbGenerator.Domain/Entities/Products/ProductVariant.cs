@@ -7,7 +7,7 @@ namespace Sastral.DbGenerator.Domain.Entities.Products;
 
 public class ProductVariant : BaseAuditableEntity
 {
-    public Guid ProductId { get; private set; }
+    public int ProductId { get; private set; }
     public string? Color { get; private set; }
     public string? Size { get; private set; }
     public string Barcode { get; private set; } = string.Empty;
@@ -21,7 +21,7 @@ public class ProductVariant : BaseAuditableEntity
 
     private ProductVariant() { } // For EF Core
 
-    public ProductVariant(Guid productId, string barcode, int stock, string? color = null, string? size = null)
+    public ProductVariant(int productId, string barcode, int stock, string? color = null, string? size = null)
     {
         ProductId = productId;
         Color = color;

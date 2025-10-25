@@ -5,10 +5,10 @@ namespace Sastral.DbGenerator.Domain.Entities.Audits;
 
 public class AuditLog : BaseEntity
 {
-    public Guid UserId { get; private set; }
+    public int UserId { get; private set; }
     public string Action { get; private set; } = string.Empty;
     public string Entity { get; private set; } = string.Empty;
-    public Guid EntityId { get; private set; }
+    public int EntityId { get; private set; }
     public string? DataBefore { get; private set; }
     public string? DataAfter { get; private set; }
     public DateTime CreatedAt { get; private set; } = DateTime.UtcNow;
@@ -19,7 +19,7 @@ public class AuditLog : BaseEntity
 
     private AuditLog() { } // For EF Core
 
-    public AuditLog(Guid userId, string action, string entity, Guid entityId, string? dataBefore = null, string? dataAfter = null, string? ipAddress = null)
+    public AuditLog(int userId, string action, string entity, int entityId, string? dataBefore = null, string? dataAfter = null, string? ipAddress = null)
     {
         UserId = userId;
         Action = action;
